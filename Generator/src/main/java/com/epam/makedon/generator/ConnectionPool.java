@@ -1,4 +1,4 @@
-package generator;
+package com.epam.makedon.generator;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,7 +26,7 @@ public final class ConnectionPool {
 
     private ConnectionPool() {
         if (instanceCreated.get()) {
-            throw new RuntimeException("Tried to clone connection pool with reflection api");
+            throw new RuntimeException("Tried to clone connection dao with reflection api");
         }
     }
 

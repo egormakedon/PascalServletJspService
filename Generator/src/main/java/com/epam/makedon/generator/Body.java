@@ -1,4 +1,4 @@
-package generator;
+package com.epam.makedon.generator;
 
 enum Body {
     BODY_1("История и особенности языка программирования Паскаль (Pascal)\n" +

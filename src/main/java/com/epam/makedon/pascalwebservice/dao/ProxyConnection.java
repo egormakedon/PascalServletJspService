@@ -1,24 +1,26 @@
-package generator;
+package com.epam.makedon.pascalwebservice.dao;
 
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
-class ProxyConnection implements Connection {
+public class ProxyConnection implements Connection {
     private Connection connection;
 
     ProxyConnection(Connection connection) {
         this.connection = connection;
     }
 
-    void closeConnection() {
-        try {
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
+    void closeConnection() throws SQLException {
+        if (connection != null) {
+            connection.close();
         }
+    }
+
+    @Override
+    public void close() throws SQLException {
+        ConnectionPool.getInstance().releaseConnection(this);
     }
 
     @Override
@@ -59,11 +61,6 @@ class ProxyConnection implements Connection {
     @Override
     public void rollback() throws SQLException {
         connection.rollback();
-    }
-
-    @Override
-    public void close() throws SQLException {
-        ConnectionPool.getInstance().releaseConnection(this);
     }
 
     @Override

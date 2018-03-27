@@ -1,4 +1,4 @@
-package generator;
+package com.epam.makedon.generator;
 
 import java.sql.*;
 import java.util.Map;
