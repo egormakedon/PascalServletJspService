@@ -1,4 +1,4 @@
-package com.epam.makedon.pascalwebservice;
+package com.epam.makedon.pascalwebservice.servlet;
 
 public class Router {
     private String path;
@@ -16,13 +16,15 @@ public class Router {
         return path;
     }
 
-    public RouteType getForward() {
+    public void setForward() {
         route = RouteType.FORWARD;
-        return route;
     }
 
-    public RouteType getRedirect() {
+    public void setRedirect() {
         route = RouteType.REDIRECT;
+    }
+
+    public RouteType getRoute() {
         return route;
     }
 }

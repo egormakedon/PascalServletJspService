@@ -1,4 +1,4 @@
-package com.epam.makedon.pascalwebservice.filter;
+package com.epam.makedon.pascalwebservice.servlet.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -16,6 +16,11 @@ public class Encoder implements Filter {
     }
 
     @Override
+    public void destroy() {
+        code = null;
+    }
+
+    @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String codeRequest = servletRequest.getCharacterEncoding();
         if (code != null && !code.equalsIgnoreCase(codeRequest)) {
@@ -24,10 +29,5 @@ public class Encoder implements Filter {
         }
 
         filterChain.doFilter(servletRequest, servletResponse);
-    }
-
-    @Override
-    public void destroy() {
-        code = null;
     }
 }

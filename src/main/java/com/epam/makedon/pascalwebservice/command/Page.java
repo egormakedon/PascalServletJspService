@@ -1,7 +1,7 @@
-package com.epam.makedon.pascalwebservice;
+package com.epam.makedon.pascalwebservice.command;
 
 public enum Page {
-    ;
+    INDEX("index.jsp");
 
     private String path;
 

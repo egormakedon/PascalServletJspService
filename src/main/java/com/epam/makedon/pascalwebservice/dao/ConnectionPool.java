@@ -34,8 +34,8 @@ public final class ConnectionPool implements Serializable, Cloneable {
 
     private enum Type {
         DATABASE_PROPERTY(File.separator + "property" + File.separator + "database.properties"),
-        URL("database.url"),
-        POOL_SIZE("database.poolSize");
+        URL("url"),
+        POOL_SIZE("poolSize");
 
         private String value;
 
