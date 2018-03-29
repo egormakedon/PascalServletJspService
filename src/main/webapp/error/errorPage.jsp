@@ -6,7 +6,6 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 
 <html lang="en">
-
 <head>
 
     <fmt:setLocale value="${sessionScope.locale}"/>
@@ -27,6 +26,18 @@
 </head>
 
 <body>
+    <form action="/Controller" method="get">
+        <input type="hidden" name="command" value="change_locale">
+        <input type="hidden" name="locale" value="en">
+        <input type="submit" value="${en_button}">
+    </form>
+
+    <form action="/Controller" method="get">
+        <input type="hidden" name="command" value="change_locale">
+        <input type="hidden" name="locale" value="ru">
+        <input type="submit" value="${ru_button}">
+    </form>
+
     <h4>${request_from}: ${pageContext.errorData.requestURI}</h4><br/>
     <h4>${servlet_name}: ${pageContext.errorData.servletName}</h4><br/>
     <h4>${status_code}: ${pageContext.errorData.statusCode}</h4><br/>

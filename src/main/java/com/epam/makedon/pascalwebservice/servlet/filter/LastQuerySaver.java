@@ -10,7 +10,7 @@ import java.io.IOException;
 public class LastQuerySaver implements Filter {
     private static final String LAST_PAGE = "lastPage";
     private static final String COMMAND = "command";
-    private static final String CHANGE_LANG = "changeLang";
+    private static final String CHANGE_LOCALE = "changeLocale";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -27,7 +27,7 @@ public class LastQuerySaver implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
 
         String commandValue = req.getParameter(COMMAND);
-        if (commandValue != null && commandValue.equals(CHANGE_LANG)) {
+        if (commandValue != null && commandValue.equals(CHANGE_LOCALE)) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
