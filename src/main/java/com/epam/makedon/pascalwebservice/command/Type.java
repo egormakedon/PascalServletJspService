@@ -1,7 +1,9 @@
 package com.epam.makedon.pascalwebservice.command;
 
 public enum Type {
-    CHANGE_LOCALE(new ChangeLocale());
+    CHANGE_LOCALE(new ChangeLocale()),
+    ADD(new Add()),
+    ;
 
     private Command command;
     Type(Command command) {

@@ -11,7 +11,6 @@ public class LastQuerySaver implements Filter {
     private static final String LAST_PAGE = "lastPage";
     private static final String COMMAND = "command";
     private static final String CHANGE_LOCALE = "change_locale";
-    private static final String NULL = "null";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

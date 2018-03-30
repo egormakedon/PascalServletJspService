@@ -33,9 +33,9 @@
         <input type="submit" value="${ru_button}">
     </form>
 
-    <h2><a href="addPage.jsp">${add}</a></h2>
+    <h4><a href="addPage.jsp">${add}</a></h4>
 
-    <h2>${article_title}:<h2>
+    <h4>${article_title}:</h4>
     <div style="overflow-y: scroll; width: 120px; height: 500px">
         <form action="/Controller" method="post">
             <input type="hidden" name="command" value="take_article">

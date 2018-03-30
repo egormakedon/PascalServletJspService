@@ -16,6 +16,8 @@
     <fmt:message bundle="${locale}" key="text.add.button" var="add"/>
     <fmt:message bundle="${locale}" key="text.add.page.title" var="title"/>
     <fmt:message bundle="${locale}" key="text.link.go.main" var="link_main"/>
+    <fmt:message bundle="${locale}" key="text.article.title" var="article_title"/>
+    <fmt:message bundle="${locale}" key="text.article.body" var="article_body"/>
 
     <title>${title}</title>
 </head>
@@ -33,12 +35,19 @@
         <input type="submit" value="${ru_button}">
     </form>
 
-    <form>
+    <form action="/Controller" method="post">
         <input type="hidden" name="command" value="add">
+
+        <h4>${article_title}:</h4>
+        <input type="text" name="title" style="width: 200px" required><br><br>
+
+        <h4>${article_body}:</h4>
+        <textarea type="text" name="body" rows="35" cols="100"></textarea><br><br>
+
         <input type="submit" value="${add}">
     </form>
 
-    <%--ANSWER--%>
+    <h4>${param.answer}</h4>
     <h4><a href="index.jsp">${link_main}</a></h4>
 </body>
 
