@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
 
-    <fmt:setLocale value="${sessionScope.locale}"/>
+    <fmt:setLocale value="${sessionScope.lang}"/>
     <fmt:setBundle basename="property.text" var="locale" scope="session"/>
 
     <fmt:message bundle="${locale}" key="text.errorPage.title" var="title"/>
@@ -28,13 +28,13 @@
 <body>
     <form action="/Controller" method="get">
         <input type="hidden" name="command" value="change_locale">
-        <input type="hidden" name="locale" value="en">
+        <input type="hidden" name="lang" value="en">
         <input type="submit" value="${en_button}">
     </form>
 
     <form action="/Controller" method="get">
         <input type="hidden" name="command" value="change_locale">
-        <input type="hidden" name="locale" value="ru">
+        <input type="hidden" name="lang" value="ru">
         <input type="submit" value="${ru_button}">
     </form>
 

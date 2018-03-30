@@ -13,14 +13,14 @@ import javax.servlet.http.HttpSessionListener;
 public class SessionCreater implements HttpSessionListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(SessionCreater.class);
 
-    private static final String LOCALE = "locale";
+    private static final String LANG = "lang";
     private static final String EN = "en";
     private static final String LAST_PAGE = "lastPage";
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         HttpSession session = se.getSession();
-        session.setAttribute(LOCALE, EN);
+        session.setAttribute(LANG, EN);
         session.setAttribute(LAST_PAGE, Page.INDEX.getPath());
         LOGGER.info(session.getId() + " session created");
     }

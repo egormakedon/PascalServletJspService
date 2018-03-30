@@ -2,9 +2,13 @@ package com.epam.makedon.pascalwebservice.servlet.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
 
-@WebFilter
+@WebFilter(filterName = "EncodingFilter", urlPatterns = "/*",
+        initParams = {
+                @WebInitParam(name = "encoding", value = "UTF-8")
+        })
 public class Encoder implements Filter {
     private static final String ENCODING = "encoding";
 

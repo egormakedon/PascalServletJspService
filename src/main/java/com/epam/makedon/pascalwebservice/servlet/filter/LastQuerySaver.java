@@ -6,11 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter
+@WebFilter(urlPatterns = {"/error/errorPage.jsp", "/addPage.jsp", "/index.jsp", "/Controller"})
 public class LastQuerySaver implements Filter {
     private static final String LAST_PAGE = "lastPage";
     private static final String COMMAND = "command";
-    private static final String CHANGE_LOCALE = "changeLocale";
+    private static final String CHANGE_LOCALE = "change_locale";
+    private static final String NULL = "null";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -32,7 +33,13 @@ public class LastQuerySaver implements Filter {
             return;
         }
 
-        String lastPage = req.getServletPath() + "?" + req.getQueryString();
+        String lastPage;
+        if (req.getQueryString() == null) {
+            lastPage = req.getServletPath();
+        } else {
+            lastPage = req.getServletPath() + "?" + req.getQueryString();
+        }
+
         HttpSession session = req.getSession();
         session.setAttribute(LAST_PAGE, lastPage);
 
