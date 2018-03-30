@@ -37,7 +37,7 @@
 
     <h4>${article_title}:</h4>
     <div style="overflow-y: scroll; width: 120px; height: 500px">
-        <form action="/Controller" method="post">
+        <form action="/Controller" method="get">
             <input type="hidden" name="command" value="take_article">
             <c:forEach items="${titleList}" var="title">
                 <input type="submit" name="title" value="${title}"><br>
