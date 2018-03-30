@@ -13,9 +13,9 @@
 
     <fmt:message bundle="${locale}" key="text.en.locale.button" var="en_button"/>
     <fmt:message bundle="${locale}" key="text.ru.locale.button" var="ru_button"/>
-    <fmt:message bundle="${locale}" key="text.index.page.title" var="title"/>
-    <fmt:message bundle="${locale}" key="text.article.title" var="article_title"/>
     <fmt:message bundle="${locale}" key="text.add.button" var="add"/>
+    <fmt:message bundle="${locale}" key="text.add.page.title" var="title"/>
+    <fmt:message bundle="${locale}" key="text.link.go.main" var="link_main"/>
 
     <title>${title}</title>
 </head>
@@ -33,17 +33,13 @@
         <input type="submit" value="${ru_button}">
     </form>
 
-    <h2><a href="addPage.jsp">${add}</a></h2>
+    <form>
+        <input type="hidden" name="command" value="add">
+        <input type="submit" value="${add}">
+    </form>
 
-    <h2>${article_title}:<h2>
-    <div style="overflow-y: scroll; width: 120px; height: 500px">
-        <form action="/Controller" method="post">
-            <input type="hidden" name="command" value="take_article">
-            <c:forEach items="${titleList}" var="title">
-                <input type="submit" name="title" value="${title}"><br>
-            </c:forEach>
-        </form>
-    </div>
+    <%--ANSWER--%>
+    <h4><a href="index.jsp">${link_main}</a></h4>
 </body>
 
 </html>

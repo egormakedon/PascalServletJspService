@@ -19,7 +19,7 @@ public interface Dao {
                 statement.close();
             } catch (SQLException e) {
                 LOGGER.error("", e);
-                throw new DaoRuntimeException();
+                throw new DaoRuntimeException(e);
             }
         }
     }
@@ -30,7 +30,7 @@ public interface Dao {
                 connection.close();
             } catch (SQLException e) {
                 LOGGER.error("", e);
-                throw new DaoRuntimeException();
+                throw new DaoRuntimeException(e);
             }
         }
     }

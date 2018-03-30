@@ -55,7 +55,7 @@ public final class ConnectionPool implements Serializable, Cloneable {
     private ConnectionPool() {
         if (instanceCreated.get()) {
             LOGGER.error("Tried to clone connection pool with reflection api");
-            throw new DaoRuntimeException();
+            throw new DaoRuntimeException("Tried to clone connection pool with reflection api");
         }
 
         registerJDBCDriver();
@@ -94,12 +94,10 @@ public final class ConnectionPool implements Serializable, Cloneable {
 
     void releaseConnection(ProxyConnection proxyConnection) {
         try {
-            proxyConnection.rollback();
-            proxyConnection.setAutoCommit(true);
             connectionQueue.put(proxyConnection);
-        } catch (InterruptedException | SQLException e) {
+        } catch (InterruptedException e) {
             LOGGER.error("release connection", e);
-            throw new DaoRuntimeException();
+            throw new DaoRuntimeException("release connection", e);
         }
     }
 
@@ -139,7 +137,7 @@ public final class ConnectionPool implements Serializable, Cloneable {
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
         } catch (SQLException e) {
             LOGGER.error("Mysql jdbc driver hasn't loaded", e);
-            throw new DaoRuntimeException();
+            throw new DaoRuntimeException("Mysql jdbc driver hasn't loaded", e);
         }
     }
 
@@ -149,7 +147,7 @@ public final class ConnectionPool implements Serializable, Cloneable {
 
         if (url == null) {
             LOGGER.error("database.properties hasn't found");
-            throw new DaoRuntimeException();
+            throw new DaoRuntimeException("database.properties hasn't found");
         }
 
         Properties databaseProps = new Properties();
@@ -157,7 +155,7 @@ public final class ConnectionPool implements Serializable, Cloneable {
             databaseProps.load(new FileInputStream(new File(url.toURI())));
         } catch (URISyntaxException | IOException e) {
             LOGGER.error("", e);
-            throw new DaoRuntimeException();
+            throw new DaoRuntimeException("", e);
         }
 
         String urlDatabase = databaseProps.getProperty(Type.URL.toString());
@@ -174,7 +172,7 @@ public final class ConnectionPool implements Serializable, Cloneable {
                 connection = DriverManager.getConnection(urlDatabase, databaseProps);
             } catch (SQLException e) {
                 LOGGER.error("Hasn't found connection with database");
-                throw new DaoRuntimeException();
+                throw new DaoRuntimeException("Hasn't found connection with database");
             }
 
             ProxyConnection proxyConnection = new ProxyConnection(connection);
@@ -182,7 +180,7 @@ public final class ConnectionPool implements Serializable, Cloneable {
                 connectionQueue.put(proxyConnection);
             } catch (InterruptedException e) {
                 LOGGER.error("", e);
-                throw new DaoRuntimeException();
+                throw new DaoRuntimeException(e);
             }
         }
     }

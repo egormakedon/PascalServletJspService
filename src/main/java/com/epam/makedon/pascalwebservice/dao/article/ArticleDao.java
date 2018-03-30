@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ArticleDao implements Dao {
+public final class ArticleDao implements Dao {
     private static final ArticleDao INSTANCE = new ArticleDao();
     private ArticleDao() {}
     public static Dao getInstance() {
