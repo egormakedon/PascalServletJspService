@@ -1,16 +1,50 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: egor
-  Date: 31.3.18
-  Time: 0.24
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+
+<html lang="en">
+
 <head>
-    <title>Title</title>
+    <fmt:setLocale value="${sessionScope.lang}"/>
+    <fmt:setBundle basename="property.text" var="locale" scope="session"/>
+
+    <fmt:message bundle="${locale}" key="text.en.locale.button" var="en_button"/>
+    <fmt:message bundle="${locale}" key="text.ru.locale.button" var="ru_button"/>
+    <fmt:message bundle="${locale}" key="text.article.page.title" var="title"/>
+    <fmt:message bundle="${locale}" key="text.link.go.main" var="link_main"/>
+    <fmt:message bundle="${locale}" key="text.update.button" var="update"/>
+    <fmt:message bundle="${locale}" key="text.remove.button" var="remove"/>
+
+    <title>${title}</title>
 </head>
+
 <body>
-    ${requestScope.article.title}
+    <form action="/Controller" method="get">
+        <input type="hidden" name="command" value="change_locale">
+        <input type="hidden" name="lang" value="en">
+        <input type="submit" value="${en_button}">
+    </form>
+
+    <form action="/Controller" method="get">
+        <input type="hidden" name="command" value="change_locale">
+        <input type="hidden" name="lang" value="ru">
+        <input type="submit" value="${ru_button}">
+    </form>
+
+    <form action="/Controller" method="post">
+        <input type="hidden" name="command" value="article_service">
+        <input type="hidden" name="id" value="${requestScope.article.articleId}">
+
+        <%----%>
+
+        <input type="submit" name="command_type" value="${update}">
+        <input type="submit" name="command_type" value="${remove}">
+    </form>
+
+    <h4><a href="index.jsp">${link_main}</a></h4>
 </body>
+
 </html>

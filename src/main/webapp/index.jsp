@@ -44,6 +44,8 @@
             </c:forEach>
         </form>
     </div>
+
+    <h4>${param.answer}</h4>
 </body>
 
 </html>
