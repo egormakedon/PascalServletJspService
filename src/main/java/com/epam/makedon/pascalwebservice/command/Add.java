@@ -29,9 +29,9 @@ public class Add implements Command {
             boolean result = ArticleDao.getInstance().addArticle(article);
             String answer;
             if (result) {
-                answer = "article " + title + " added successfully";
+                answer = title + " added successfully";
             } else {
-                answer = "article " + title + " wrong added";
+                answer = title + " wrong added";
             }
             router.setPath(Page.ADD.getPath() + "?answer=" + answer);
         } catch (DaoException e) {
