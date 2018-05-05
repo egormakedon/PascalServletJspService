@@ -6,6 +6,7 @@
         <title>Include tag</title>
     </head>
     <body>
-        Include tag: ${param.helloWorld}
+        Include tag: ${param.helloWorld} <br>
+        Bean request scope: ${beanRequest}
     </body>
 </html>

@@ -14,8 +14,12 @@
         <fmt:message bundle="${locale}" key="text.article.title" var="article_title"/>
         <fmt:message bundle="${locale}" key="text.add.button" var="add"/>
 
-        <jsp:useBean id="bean1" class="java.lang.String" scope="page"/>
-        <jsp:useBean id="bean2" class="java.lang.String" scope="page"/>
+        <jsp:useBean id="beanPage" class="java.lang.String" scope="page"/>
+        <jsp:useBean id="beanRequest" class="java.lang.String" scope="request"/>
+        <jsp:useBean id="beanSession" class="java.lang.String" scope="session"/>
+        <jsp:useBean id="beanApplication" class="java.lang.String" scope="application"/>
+
+        ${beanRequest="requestScopeBean"}
 
         <title>${title}</title>
     </head>
@@ -92,7 +96,9 @@
         </form>
 
         <h1>useBean:</h1>
-        <%bean1="1";bean2="1";%>
-        ${bean1.equals(bean2)}
+        Bean page scope: ${beanPage="pageScopeBean"}<br>
+        Bean request scope: ${beanRequest="requestScopeBean"}<br>
+        Bean session scope: ${beanSession="sessionScopeBean"}<br>
+        Bean application scope: ${beanApplication="applicationScopeBean"}
     </body>
 </html>

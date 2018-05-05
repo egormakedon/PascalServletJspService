@@ -51,6 +51,9 @@ public class PascalWebServlet extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println((String)req.getSession().getAttribute("beanSession"));
+        System.out.println((String)req.getServletContext().getAttribute("beanApplication"));
+
         Optional<Command> commandOptional = Factory.defineCommand(req.getParameter(COMMAND));
         if (!commandOptional.isPresent()) {
             LOGGER.error("command doesn't exist");
