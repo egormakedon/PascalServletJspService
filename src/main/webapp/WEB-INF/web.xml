@@ -13,4 +13,24 @@
     <error-page>
         <location>/error/errorPage.jsp</location>
     </error-page>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <servlet-name>PascalWebServlet</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>LastQuerySaverFilter</filter-name>
+        <servlet-name>PascalWebServlet</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>DropRequestFilter</filter-name>
+        <servlet-name>PascalWebServlet</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>TakeTitlesFilter</filter-name>
+        <servlet-name>PascalWebServlet</servlet-name>
+    </filter-mapping>
 </web-app>

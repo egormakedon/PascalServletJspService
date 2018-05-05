@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/error/errorPage.jsp", "/addPage.jsp", "/index.jsp", "/Controller", "/articlePage.jsp"})
+@WebFilter(filterName = "LastQuerySaverFilter", urlPatterns = {"/error/errorPage.jsp", "/addPage.jsp", "/index.jsp", "/Controller", "/articlePage.jsp"})
 public class LastQuerySaver implements Filter {
     private static final String LAST_PAGE = "lastPage";
     private static final String COMMAND = "command";

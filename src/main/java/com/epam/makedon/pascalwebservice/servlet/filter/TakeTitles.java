@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebFilter(urlPatterns = "/index.jsp")
+@WebFilter(filterName = "TakeTitlesFilter", urlPatterns = "/index.jsp")
 public class TakeTitles implements Filter {
     private static final Logger LOGGER = LoggerFactory.getLogger(TakeTitles.class);
 

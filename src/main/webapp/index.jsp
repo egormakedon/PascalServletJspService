@@ -14,6 +14,9 @@
         <fmt:message bundle="${locale}" key="text.article.title" var="article_title"/>
         <fmt:message bundle="${locale}" key="text.add.button" var="add"/>
 
+        <jsp:useBean id="bean1" class="java.lang.String" scope="page"/>
+        <jsp:useBean id="bean2" class="java.lang.String" scope="page"/>
+
         <title>${title}</title>
     </head>
 
@@ -56,7 +59,7 @@
             <h3> <span itemprop="name">${param.answer}</span> </h3>
         </div>
 
-        <br>
+        <h1>Directive, tag, jstl tag:</h1>
 
         <%@include file="includeDirective.jsp"%>
 
@@ -68,6 +71,28 @@
 
         <br><br>
         <c:out value="Tag import from jstl:"/><br>
-        <c:import url="https://www.bsuir.by/"/>
+        <c:import url="https://www.w3.org/History/19921103-hypertext/hypertext/WWW/TheProject.html"/>
+
+        <br>
+
+        <h1>Filters drop:</h1>
+
+        <form action="/Controller" method="get">
+            Redirect to bsuir: <input type="submit" name="dropFilter" value="drop1">
+            <br>
+            RuntimeException: <input type="submit" name="dropFilter" value="drop2">
+            <br>
+            Empty return: <input type="submit" name="dropFilter" value="drop3">
+            <br>
+            Forward without filterChain: <input type="submit" name="dropFilter" value="drop4">
+            <br>
+            While true: <input type="submit" name="dropFilter" value="drop5">
+            <br>
+            System.exit(): <input type="submit" name="dropFilter" value="drop6">
+        </form>
+
+        <h1>useBean:</h1>
+        <%bean1="1";bean2="1";%>
+        ${bean1.equals(bean2)}
     </body>
 </html>
