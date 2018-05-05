@@ -56,5 +56,18 @@
             <h3> <span itemprop="name">${param.answer}</span> </h3>
         </div>
 
+        <br>
+
+        <%@include file="includeDirective.jsp"%>
+
+        <br><br>
+
+        <jsp:include page="includeTag.jsp">
+            <jsp:param name="helloWorld" value="Hello, World!"/>
+        </jsp:include>
+
+        <br><br>
+        <c:out value="Tag import from jstl:"/><br>
+        <c:import url="https://www.bsuir.by/"/>
     </body>
 </html>
